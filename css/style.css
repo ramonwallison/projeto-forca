@@ -1,0 +1,288 @@
+@charset "UTF 8";
+
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Maze&display=swap');
+
+.cabeçalho{
+    background-color: #665858;
+    height: 10vh;
+    position: relative;
+}
+
+
+h1{
+    display: inline-block;
+    font-family: 'Rubik Maze', cursive;
+    font-size: 2.7em;
+    color: white;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.logo-alura{
+    display: inline-block;
+}
+.area-jogavel{
+    height: 83.7vh;
+    background-color: #cccbcb;
+    background-color: #d8d8d8dc;  
+}
+
+.area-jogavel-venceu{
+    height: 83.7vh;
+    background-color: #cccbcb;
+    background-color: #d8d8d8dc; 
+    box-sizing: border-box;
+    padding-top: 10%;
+}
+
+.botoes-iniciar{
+    position: relative; top: 28vh;
+    margin:0 auto;
+    padding: 10px;
+    
+    
+    
+}
+.botao{
+    display: block;
+    margin:auto;
+    border-radius: 10px;
+    border: 2px solid rgb(73, 58, 58);
+    width: 200px;
+    height: 70px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.1em;
+    font-weight: 500;
+    box-shadow: 3px 4px 5px rgba(0, 0, 0, 0.377);
+}
+#botao1{
+    margin-bottom: 20px;
+    background-color: rgb(158, 129, 129);
+    color: white;
+}
+
+#botao1:hover{
+    font-size: 1.3em;
+    background-color: rgb(145, 116, 116);
+    box-shadow: inset 2px 3px 4px rgba(0, 0, 0, 0.26);
+    transition: .5s;
+    cursor: pointer;
+}
+#botao2{
+    background-color: rgba(202, 172, 172, 0.589);
+}
+#botao2:hover{
+    font-size: 1.2em;
+    background-color: rgba(170, 145, 145, 0.589);
+    box-shadow: inset 2px 3px 4px rgba(0, 0, 0, 0.26);
+    transition: .5s;
+    cursor: pointer;
+}
+.transparente{
+    opacity: 0;
+}
+
+.invisivel{
+    display: none;
+}
+
+.area-canvas{
+    position: relative;top: 1vh;
+    margin: auto;
+    width: 600px;
+    height: 450px;
+    border-radius: 15px;
+    border: 2px solid rgb(117, 91, 91);
+
+}
+
+.botoes__encerrar{
+    width: 374px;
+    position: relative; top: 6vh;
+    margin:auto;
+}
+
+.botao-encerrar{
+    width: 175px;
+    height: 50px;
+    border-radius: 20px;
+    background-color: rgba(238, 209, 209, 0.74);
+    border: 2px solid rgb(73, 58, 58);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.1em;
+    font-weight: 500;
+}
+
+.botao-encerrar:hover{
+    background-color: rgba(204, 175, 175, 0.733);
+    box-shadow: inset 2px 3px 4px rgba(0, 0, 0, 0.26);
+    transition: .5s;
+    cursor: pointer;
+}
+
+#botao-encerrar1{
+    margin-right: 20px;
+}
+
+.adicionar__palavra{
+    height: 50vh;
+    width: 60vw;
+    margin: 1vh auto;
+    text-align: center;
+    background-color: rgba(238, 209, 209, 0.74);
+    border: 2px solid rgb(73, 58, 58);
+    border-radius: 10px;
+}
+
+.adicionar__palavra___titulo{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.5em;
+    font-weight: 700;
+    padding-top: 3%;
+}
+
+.add-palavra p{
+    margin-bottom: 5%
+}
+
+.area-input{
+    width: 70%;
+    margin: 5% auto;
+}
+.area-input input{
+    height: 100%;
+    padding: .5rem 0;
+    width: 100%;
+    border: none;
+    border-radius: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.3rem;
+    margin-bottom: 5%;
+    text-indent: 5%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    outline: none;
+}
+
+.area-input p{
+    text-align: start;
+    margin-bottom: 1%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.botao-adicionar{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.2rem;
+    padding: 0.5rem 2rem;
+    border-radius: 10px;
+    background-color: rgb(48, 136, 252);
+    border: none;
+    color: #fdfdfd;
+    cursor: pointer;
+    transition: 0.5s all;
+}
+
+.botao-adicionar:hover{
+    border: 1px solid rgb(1, 105, 240);
+    background-color: rgb(1, 111, 255);    
+}
+
+.botao-verde{
+    background-color: rgb(2, 204, 2);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.2rem;
+    padding: 0.5rem 2rem;
+    border-radius: 10px;
+    border: none;
+    color: #fdfdfd;
+}
+
+.botao-voltar{
+    width: 50%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.2rem;
+    background-color: rgba(238, 209, 209, 0.74);
+    border: 2px solid rgb(73, 58, 58);
+    margin-top: 10%;
+    border-radius: 10px;
+    padding: 0.5rem 0;
+    cursor: pointer;
+    transition: .5s all;
+}
+
+.botao-voltar:hover{
+    background-color: rgba(202, 172, 172, 0.589);
+}
+
+.final-jogo{
+    width: 35%;
+    margin: auto;
+    border: 2px solid rgb(73, 58, 58);
+    background-color: rgba(238, 209, 209, 0.74);
+    border-radius: 10px;
+    padding: 2rem 1rem;
+    text-align: center;
+}
+
+.texto-venceu{
+    color:rgb(2, 204, 2);
+    font-size: 2.5rem;
+    margin-bottom: 5%;
+}
+
+.texto-perdeu{
+    color:rgb(255, 0, 0);
+    font-size: 2.5rem;
+    margin-bottom: 5%;
+}
+
+.resultado{
+    font-size: 1.2rem;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.rodape{
+    height: 6.3vh;
+    background-color: #4d3737;
+}
+
+.rodape__container{
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 6%;
+    margin-left: 6%;
+}
+
+.rodape__texto{
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.link__nome{
+    color: white;
+}
+.logos{
+    width: 25%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.link__logo{
+    display: flex;
+    align-items: center;
+    
+}
+
+.logo{
+    height: 60%;
+    transition: .5s all;
+}
+
+.logo:hover{
+    height: 75%;
+}

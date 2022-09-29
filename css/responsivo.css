@@ -1,0 +1,93 @@
+
+
+@media screen and (max-width:600px){
+
+    .cabeçalho__container{
+        justify-content: space-between;
+        width: auto;
+    }
+
+    h1{
+        font-size: 1.8em;
+    }
+
+    .logo-alura{
+        display: none;
+    }
+
+    .area-canvas{
+        width: 350px;
+        height: 263px;
+        top: 7vh;
+    }
+
+    canvas{
+        width: 350px;
+    }
+
+    .botoes-encerrar{
+        width: 60vw;
+        top: 21vh;
+    }
+
+    .botao-encerrar{
+        width: 100%;
+    }
+
+    #botao-encerrar1{
+        margin-bottom: 10px;
+        margin-right: 0;
+    }
+
+    .rodape__container{
+        margin-right: 2%;
+        margin-left: 2%;
+    }
+
+    .logos{
+        width: 40%;
+    }
+
+    .rodape__texto{
+        font-size: .8rem;
+    }
+
+    .final-jogo{
+        width: 60%;
+    }
+
+    .adicionar__palavra{
+        width: 90vw;
+    }
+
+    .area-input{
+        width: 90%;
+        margin-top: 15%;
+    }
+
+    .adicionar__palavra___titulo{
+        padding-top: 5%;
+    }
+
+    .botao-voltar{
+        width: 70%;
+        margin-top: 15%;
+    }
+
+}
+
+@media screen and (min-width: 430px){
+    .botao-voltar{
+        margin-top: 5%;
+    }
+}
+
+@media screen and (min-width: 1100px){
+    .final-jogo{
+        width: 20%;
+    }
+
+    .adicionar__palavra{
+        width: 40vw;
+    }
+}

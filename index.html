@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo da Forca</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsivo.css">
+</head>
+<body>
+    <header class="cabeçalho">
+            <img class="logo-alura" src="css/imagens/Vector.png" alt="Logo alura">
+            <h1>Jogo da Forca</h1>
+    </header>
+    <section class="area-jogavel">
+        <div class="botoes-iniciar">
+            <button id="botao1" class="botao">Iniciar jogo</button>
+            <button id="botao2" class="botao">Adicionar palavra</button>
+        </div>
+        <div class="invisivel" id="area-canvas">
+            <canvas width="600" height="450"></canvas>
+        </div>
+
+        <div class="invisivel final-jogo">
+            <h2 class="texto-venceu">Você Venceu!</h2>
+            <p class="resultado"></p>
+        </div>
+
+        <div class="invisivel botoes__encerrar">
+            <button  class="botao-encerrar" id="botao-encerrar1">Sair do jogo</button>
+            <button class="botao-encerrar" id="botao-encerrar2">Adicionar palavra</button>
+        </div>
+
+    <div class="invisivel adicionar__palavra" >
+        <h3 class="adicionar__palavra___titulo">Adicionar palavra</h3>
+        <p>(Min: 4 letras, Máx:10 letras)</p>
+
+        <div class="area-input">
+            <p><label for="palavra-add">Digite a palavra:</label></p>
+            <input type="text" name="palavra-add" id="palavra-add" minlength="4" maxlength="10">
+            <button class="botao-adicionar">Adicionar</button>
+        </div>
+        <button class="botao-voltar">Voltar</button>
+    </div>
+    </section>
+
+    <footer class="rodape">
+        <div class="rodape__container">
+            <p class="rodape__texto">Criado por <a class="link__nome" href="https://github.com/ramonwallison" target="_blank">Ramon Wallison</a></p>
+            <div class="logos">
+                <a class="link__logo" href="https://github.com/ramonwallison" target="_blank"><img class="logo" src="css/imagens/git.png" alt="Logo github"></a>
+                <a class="link__logo" href="https://www.instagram.com/ramon_wallison/" target="_blank"><img class="logo" src="css/imagens/logo_instagram.png" alt="Logo instagram"></a>
+                <a class="link__logo" href="https://www.facebook.com/profile.php?id=100012533506061" target="_blank"><img class="logo" src="css/imagens/facebook-branco.png" alt="Logo facebook"></a>
+            </div>
+        </div>
+        
+    </footer>
+    
+
+<script src="script.js"></script>
+</body>
+</html>
