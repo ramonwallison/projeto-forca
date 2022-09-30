@@ -8,7 +8,7 @@
     }
 
     h1{
-        font-size: 1.8em;
+        font-size: 1.5em;
     }
 
     .logo-alura{
@@ -26,13 +26,15 @@
     }
 
     .botoes-encerrar{
-        width: 350px;
-        top: 5vh;
+        max-width: 315px;
+        top: -4vh;
         margin: auto;
     }
 
     .botao-encerrar{
         width: 45%;
+        height: 40px;
+        font-size: 1rem;
     }
 
     #botao-encerrar1{
@@ -54,7 +56,8 @@
     }
 
     .final-jogo{
-        width: 60%;
+        width: 65%;
+        margin-bottom: 10%;
     }
 
     .adicionar__palavra{
@@ -63,7 +66,6 @@
 
     .area-input{
         width: 90%;
-        margin-top: 15%;
     }
 
     .adicionar__palavra___titulo{
@@ -72,23 +74,38 @@
 
     .botao-voltar{
         width: 70%;
-        margin-top: 10%;
+    }
+
+    .texto__venceu{
+        font-size: 2rem;
+    }
+
+    .texto__perdeu{
+        font-size: 2rem;
     }
 
 }
 
-@media screen and (min-width: 430px){
-    .botao-voltar{
-        margin-top: 5%;
+@media screen and (min-width: 600px){
+    .botoes-encerrar{
+        top: -3vh;
+    }
+
+    .teclado{
+        margin-top: 4%;
     }
 }
 
-@media screen and (min-width: 1100px){
+@media screen and (min-width: 1000px){
     .final-jogo{
         width: 20%;
     }
 
     .adicionar__palavra{
         width: 40vw;
+    }
+
+    .botoes-encerrar{
+        top: 4vh;
     }
 }

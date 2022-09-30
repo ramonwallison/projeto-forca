@@ -129,11 +129,11 @@ function desenharTabuleiro(){
     });
 
     if(largura < 1000){
-        testandoTeclado()
+        tecladoVirtual()
     }
 }
 
-function testandoTeclado(){
+function tecladoVirtual(){
 
     teclado.classList.remove("invisivel");
 
@@ -143,6 +143,7 @@ function testandoTeclado(){
 
     function button(e){
         var btValor = document.getElementById(e.target.id).dataset.v;
+        var btValorId = document.getElementById(e.target.id);
         
         if(palavraSecreta.includes(btValor)){ // Includes = Se a tecla digitada tiver (incluida) dentro do (palavra sorteada)
                 
@@ -152,7 +153,9 @@ function testandoTeclado(){
             }else{
                 for(var i = 0; i < palavraSecreta.length; i++){ // (Laço) que percorre a (palavra sorteada)
                     if(palavraSecreta[i] === btValor){ // Se uma (posição) dentro da palavra sorteada for igual a tecla digitada a função é chamada 
-                        desenhaLetra(i) // Função chamada na posição onde o (incrementador) igualou com a tecla  
+                        desenhaLetra(i) // Função chamada na posição onde o (incrementador) igualou com a tecla 
+                        btValorId.classList.remove("teclado__btn");
+                        btValorId.classList.add("tecla__certa");
                         palavraCorreta.push(btValor);   
                     }
                 } 
@@ -172,6 +175,8 @@ function testandoTeclado(){
                         
                         if(erros[i] == btValor){ // Condição necessária para que o laço chame a função 1 por vez
                             desenhaLetraErrada(btValor, i); // Função chamada com os parâmetros (tecla) e (incrementador) sempre somando (+1)
+                            btValorId.classList.remove("teclado__btn");
+                            btValorId.classList.add("tecla__errada");
                             desenhaCabeça()
                         } if(erros.length > 1){
                             desenhaCorpo()
@@ -188,7 +193,7 @@ function testandoTeclado(){
                         
                     } if(erros.length == 6){ // Se o array erros tiver mais que 6 elementos o usuário perde (6 chances)
                             finalDeJogo()
-                            textoFinal.textContent = ("Você Perdeu!");
+                            textoFinal.textContent = ("Você Errou!");
                             textoFinal.classList.remove("texto-venceu");
                             textoFinal.classList.add("texto-perdeu");
                         }
@@ -207,6 +212,7 @@ function finalDeJogo(){
     resultado.textContent = (`${palavraSecreta}`); // Palavra sorteada é revelada
     areaCanvas.classList.add("invisivel"); // Tela do canvas removida
     finalJogo.classList.remove("invisivel"); // Div da vitória é exibida
+    teclado.classList.add("invisivel");
 }
 
 // Lógica de adicionar palavra ainda incompleta
@@ -223,6 +229,8 @@ function adicionandoPalavra(){
     areaJogavel.classList.add("area-jogavel"); // Section principal recebendo função comum
 
     novaPalavra.classList.remove("invisivel"); // Div de adição de palavra é exibida
+
+    teclado.classList.add("invisivel");
 
     adicionando.addEventListener("click", function(){ // Clicando no botão de adicionar palavra
         var palavraAdicionada = inputPalavra.value // Palavra digitada
