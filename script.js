@@ -262,7 +262,6 @@ function sorteiaPalavra(){
     var i = Math.round(Math.random() * (geralPalavras.length)); // Lógica do sorteio
     var palavra = (geralPalavras[i])
     palavraSecreta = palavra
-    alert(palavra); // Alerta para teste contendo a palavra sorteada
         
     // Função que posiciona os traços no centro do canvas
    
