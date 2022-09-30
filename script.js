@@ -21,71 +21,157 @@ var textoFinal = document.querySelector(".texto-venceu")
 var erros = [];
 var palavraCorreta = [];
 var infoP = document.querySelector("#info-p");
+var largura = window.screen.width
+
+// teclado
+var teclado = document.querySelector(".teclado");
+var tdButton = document.getElementsByClassName("teclado__btn")
 
 var geralPalavras = ["LARANJA", "MANGA", "TAMARINDO", "ABACAXI", "CAJU", "BANANA", "MELANCIA", "NECTARINA", "AMEIXA",
      "ADVOGADO", "POLICIAL", "BOMBEIRO", "BARBEIRO", "MANICURE", "ZELADOR", "ATENDENTE", "JUIZ","ALEMANHA", "PORTUGAL", "BRASIL", "URUGUAI", "CHILE", "INGLATERRA", "RUSSIA", "UCRANIA","FLUMINENSE", "JOINVILE", "FLAMENGO", "BARCELONA", "JUVENTUS", "MILAN", "ROMA", "VASCO"]; // Array PALAVRA com várias palavras para serem sorteadas
 
 function desenharTabuleiro(){
-botaoIniciar.classList.add("invisivel");
 
-botoesEncerrar.classList.remove("invisivel");
-botoesEncerrar.classList.add("botoes-encerrar");
+    botaoIniciar.classList.add("invisivel");
 
-areaCanvas.classList.remove("invisivel");
-areaCanvas.classList.add("area-canvas");
+    botoesEncerrar.classList.remove("invisivel");
+    botoesEncerrar.classList.add("botoes-encerrar");
 
-pincel.fillStyle = ("#eed1d1bd");
-pincel.fillRect(0, 0, 600, 450);
+    areaCanvas.classList.remove("invisivel");
+    areaCanvas.classList.add("area-canvas");
 
-var largura = window.screen.width
-console.log(largura)
+    pincel.fillStyle = ("#eed1d1bd");
+    pincel.fillRect(0, 0, 600, 450);
 
-sorteiaPalavra();
+    sorteiaPalavra();
 
 
-if(largura < 400){
-    desenhaTraçoMenor()
-    // pintaVermelho()
-} else{
-    desenhaTraço(); // Chamando função desenha traço com parâmetros = (Palavra sorteada, Posição inicial dos traços, Espaço utilizado por cada traço)
+    if(largura < 400){
+        desenhaTraçoMenor()
+        // pintaVermelho()
+    } else{
+        desenhaTraço(); // Chamando função desenha traço com parâmetros = (Palavra sorteada, Posição inicial dos traços, Espaço utilizado por cada traço)
+    }
+
+    desenhaForca();
+
+    body.addEventListener("keydown", function(e){ // Keydown = Alertado quando o teclado é digitado
+        var teclado = e.keyCode // e.key = Reconhece qual tecla foi digitada
+        var tecla = e.key.toUpperCase()
+        
+        if(teclado >= 65 && teclado <= 90){
+
+            if(palavraSecreta.includes(tecla)){ // Includes = Se a tecla digitada tiver (incluida) dentro do (palavra sorteada)
+                
+                if(palavraCorreta.includes(tecla)){
+                    alert("Você já digitou essa letra");
+                    return;
+                } else{
+                    for(var i = 0; i < palavraSecreta.length; i++){ // (Laço) que percorre a (palavra sorteada)
+                        if(palavraSecreta[i] === tecla){ // Se uma (posição) dentro da palavra sorteada for igual a tecla digitada a função é chamada 
+                            desenhaLetra(i) // Função chamada na posição onde o (incrementador) igualou com a tecla  
+                            palavraCorreta.push(tecla);   
+                        }
+                    } 
+                } if(palavraCorreta.length == palavraSecreta.length){
+                        finalDeJogo()
+                }
+                
+            }else{ // Se a tecla digitada não estiver incluida dentro da (palavra sorteada)
+                if(erros.includes(tecla)){ // Se a tecla digitada já estiver inclusa dentro do (array erros) função para
+                    alert("Você já digitou essa letra")
+                    return;
+                } else{ // Se nõa estiver inclusa...
+
+                    erros.push(tecla); // tecla digitada é puxada para dentro do (aray erros)
+
+                        for(var i = 0; i < erros.length; i++){ // Laço percorre o (array erros)
+                            
+                            if(erros[i] == tecla){ // Condição necessária para que o laço chame a função 1 por vez
+                                desenhaLetraErrada(tecla, i); // Função chamada com os parâmetros (tecla) e (incrementador) sempre somando (+1)
+                                desenhaCabeça()
+                            } if(erros.length > 1){
+                                desenhaCorpo()
+                            } if(erros.length > 2){
+                                desenhaBraçoDireito()
+                            } if(erros.length > 3){
+                                desenhaBraçoEsquerdo()
+                            } if(erros.length > 4){
+                                desenhaPernaDireita()
+                            } if(erros.length > 5){
+                                desenhaPernaEsquerda()
+                            }
+                            
+                            
+                        } if(erros.length == 6){ // Se o array erros tiver mais que 6 elementos o usuário perde (6 chances)
+                                finalDeJogo()
+                                textoFinal.textContent = ("Você Perdeu!");
+                                textoFinal.classList.remove("texto-venceu");
+                                textoFinal.classList.add("texto-perdeu");
+                            }
+                    
+                }
+                
+
+            }
+        } else{
+            alert("Apenas letras de A a Z")
+        }
+            
+                //for(var c = 0; c < palavra.length; c++){
+                //   var letra = (palavra[c]); // Uma letra por vez até formar a palavra
+                //   if(letra == tecla){ // Compara a letra atual com a tecla digitada
+                //       alert("Deu bom");
+                //       desenhaLetra(letra, xtotal, pos) // Tentando cetralizar cada letra !!!!!!!
+                        
+                //   }
+            // }
+    });
+
+    if(largura < 1000){
+        testandoTeclado()
+    }
 }
 
-desenhaForca();
+function testandoTeclado(){
 
-body.addEventListener("keydown", function(e){ // Keydown = Alertado quando o teclado é digitado
-    var teclado = e.keyCode // e.key = Reconhece qual tecla foi digitada
-    var tecla = e.key.toUpperCase()
-    
-    if(teclado >= 65 && teclado <= 90){
+    teclado.classList.remove("invisivel");
 
-        if(palavraSecreta.includes(tecla)){ // Includes = Se a tecla digitada tiver (incluida) dentro do (palavra sorteada)
-            
-            if(palavraCorreta.includes(tecla)){
+    for(var i = 0; i < tdButton.length; i++){
+        tdButton[i].addEventListener("click", button)
+    }
+
+    function button(e){
+        var btValor = document.getElementById(e.target.id).dataset.v;
+        
+        if(palavraSecreta.includes(btValor)){ // Includes = Se a tecla digitada tiver (incluida) dentro do (palavra sorteada)
+                
+            if(palavraCorreta.includes(btValor)){
                 alert("Você já digitou essa letra");
                 return;
-            } else{
+            }else{
                 for(var i = 0; i < palavraSecreta.length; i++){ // (Laço) que percorre a (palavra sorteada)
-                    if(palavraSecreta[i] === tecla){ // Se uma (posição) dentro da palavra sorteada for igual a tecla digitada a função é chamada 
+                    if(palavraSecreta[i] === btValor){ // Se uma (posição) dentro da palavra sorteada for igual a tecla digitada a função é chamada 
                         desenhaLetra(i) // Função chamada na posição onde o (incrementador) igualou com a tecla  
-                        palavraCorreta.push(tecla);   
+                        palavraCorreta.push(btValor);   
                     }
                 } 
-             } if(palavraCorreta.length == palavraSecreta.length){
+            }   if(palavraCorreta.length == palavraSecreta.length){
                     finalDeJogo()
-               }
+                }
             
         }else{ // Se a tecla digitada não estiver incluida dentro da (palavra sorteada)
-            if(erros.includes(tecla)){ // Se a tecla digitada já estiver inclusa dentro do (array erros) função para
+            if(erros.includes(btValor)){ // Se a tecla digitada já estiver inclusa dentro do (array erros) função para
                 alert("Você já digitou essa letra")
                 return;
             } else{ // Se nõa estiver inclusa...
 
-                erros.push(tecla); // tecla digitada é puxada para dentro do (aray erros)
+                erros.push(btValor); // tecla digitada é puxada para dentro do (aray erros)
 
                     for(var i = 0; i < erros.length; i++){ // Laço percorre o (array erros)
                         
-                        if(erros[i] == tecla){ // Condição necessária para que o laço chame a função 1 por vez
-                            desenhaLetraErrada(tecla, i); // Função chamada com os parâmetros (tecla) e (incrementador) sempre somando (+1)
+                        if(erros[i] == btValor){ // Condição necessária para que o laço chame a função 1 por vez
+                            desenhaLetraErrada(btValor, i); // Função chamada com os parâmetros (tecla) e (incrementador) sempre somando (+1)
                             desenhaCabeça()
                         } if(erros.length > 1){
                             desenhaCorpo()
@@ -106,27 +192,14 @@ body.addEventListener("keydown", function(e){ // Keydown = Alertado quando o tec
                             textoFinal.classList.remove("texto-venceu");
                             textoFinal.classList.add("texto-perdeu");
                         }
-                   
+                
             }
             
 
         }
-    } else{
-        alert("Apenas letras de A a Z")
     }
-        
-            //for(var c = 0; c < palavra.length; c++){
-            //   var letra = (palavra[c]); // Uma letra por vez até formar a palavra
-            //   if(letra == tecla){ // Compara a letra atual com a tecla digitada
-            //       alert("Deu bom");
-            //       desenhaLetra(letra, xtotal, pos) // Tentando cetralizar cada letra !!!!!!!
-                    
-            //   }
-        // }
-});
-
-
 }
+
 // Função da Vitória
 function finalDeJogo(){
     areaJogavel.classList.remove("area-jogavel"); // Section principal perder a classe comum
@@ -173,7 +246,7 @@ function adicionandoPalavra(){
 
 
 
-console.log(geralPalavras)
+
 // Sorteia a palavra aleatoriamente dentro do array (PALAVRA)
 function sorteiaPalavra(){
    
@@ -233,13 +306,6 @@ function desenhaTraçoMenor (){
     var xcanva = (300);
     var xpalavra = (29* palavraSecreta.length);
     var xinicial = ((xcanva - xpalavra ));
-
-    console.log(palavraSecreta.length)
-    
-
-    
-
-    console.log(xinicial)
 
     for(var i = 0; i < palavraSecreta.length; i++){
 

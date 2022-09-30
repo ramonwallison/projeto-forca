@@ -101,7 +101,7 @@ h1{
 
 .botoes__encerrar{
     width: 374px;
-    position: relative; top: 6vh;
+    position: relative; top: 2vh;
     margin:auto;
 }
 
@@ -285,4 +285,41 @@ h1{
 
 .logo:hover{
     height: 75%;
+}
+
+.teclado{
+    width: 95vw;
+    height: 25vh;
+    margin: 10% auto 0 auto;
+}
+
+.teclado__cima{
+    display: flex;
+    justify-content: space-between;
+    height: 20%;
+    margin-bottom: 2%;
+}
+
+.teclado__meio{
+    display: flex;
+    justify-content: space-between;
+    height: 20%;
+    margin-bottom: 2%;
+}
+
+.teclado__baixo{
+    display: flex;
+    justify-content: space-between;
+    width: 85%;
+    height: 20%;
+    margin: 0 auto;
+}
+
+.teclado__baixo > button:nth-child(1n){
+    width: 11%;
+}
+
+.teclado__btn{
+    width: 8%;
+    height: 100%;
 }
